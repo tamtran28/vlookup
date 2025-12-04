@@ -21,8 +21,8 @@ if file1 and file2:
     # Các cột cần lấy từ file 2
     cols_needed = [
         "TÌNH HÌNH KPCS",
-        "NGÀY HOÀN TẤT KPCS",
-        "TRÌNH TRẠNG KPCS"
+        "NGÀY HOÀN TẤT KPCS (mm/dd/yyyy)",
+        "TRÌNH TRANG KPCS (Đã KP, Đang KP; Chưa KP)"
     ]
 
     # Kiểm tra xem file 2 có đủ cột không
@@ -38,9 +38,9 @@ if file1 and file2:
         )
 
         # Format ngày mm/dd/yyyy nếu có
-        if "NGÀY HOÀN TẤT KPCS" in result.columns:
-            result["NGÀY HOÀN TẤT KPCS"] = pd.to_datetime(
-                result["NGÀY HOÀN TẤT KPCS"], errors="coerce"
+        if "NGÀY HOÀN TẤT KPCS (mm/dd/yyyy)" in result.columns:
+            result["NGÀY HOÀN TẤT KPCS (mm/dd/yyyy)"] = pd.to_datetime(
+                result["NGÀY HOÀN TẤT KPCS (mm/dd/yyyy)"], errors="coerce"
             ).dt.strftime("%m/%d/%Y")
 
         st.subheader("📌 Kết quả sau khi đối chiếu")
